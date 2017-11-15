@@ -14,6 +14,7 @@ class UserType extends AbstractType
     {
         // FIXME: Ajouter les champs firstname, lastname, email, birthday
 
+
         $builder
             ->add('plainPassword', RepeatedType::class, [
                 'mapped'         => false,
@@ -21,6 +22,18 @@ class UserType extends AbstractType
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
             ]);
+
+        $builder->add('firstname', 'firstname')
+        ->add('lastname', 'lastname')
+        ->add('email', 'email' )
+        ->add('birthday', 'birthday')
+        ->add('plainPassword', RepeatedType::class, array(
+                'mapped' => false,
+                'type' => PasswordType::class,
+                'first_options'  => array('label' => 'Password'),
+                'second_options' => array('label' => 'Repeat Password'),
+            ))
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

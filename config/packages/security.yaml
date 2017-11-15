@@ -27,5 +27,8 @@ security:
                 default_target_path: my_profile
 
     access_control:
-        - { path: ^/, roles: ROLE_USER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile/1, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile/2, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: ROLE_USER}
         - { path: ^/admin, roles: ROLE_ADMIN }
